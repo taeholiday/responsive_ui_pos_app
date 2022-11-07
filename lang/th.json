@@ -1,0 +1,19 @@
+{
+    "title": "POS แอพพลิเคชั่น",
+    "register": "สร้างบัญชีผู้ใช้งาน",
+    "login": "เข้าสู่ระบบ",
+    "emailLabel": "อีเมล *",
+    "passwordLabel": "รหัสผ่าน *",
+    "firstNameLabel": "ชื่อจริง *",
+    "lastNameLabel": "นามสกุล *",
+    "phoneNumberLabel": "เบอร์โทรศัพท์ *",
+    "storeNameLabel": "ชื่อธุรกิจ *",
+    "signInHere": "มีบัญชีผู้ใช้งานอยู่แล้ว?",
+    "sale": "การขาย",
+    "receipt": "ใบเสร็จรับเงิน",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "chooseBusinessType": "เลือกประเภทธุระกิจ *",
+    "pleaseAcceptTheTermsOfUse": "โปรดยอมรับข้อกำหนดการใช้งาน",
+    "acceptThePOSApplication": "ฉันยอมรับ ข้อกำหนดการใช้งานของ POS Application และได้อ่านและยอมรับนโยบายความเป็นส่วนตัว แล้ว",
+    "youDon'tHaveAWebBrowser": "คุณไม่มีเว็บบราวเซอร์"
+}

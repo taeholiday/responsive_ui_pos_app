@@ -1,0 +1,19 @@
+{
+    "title": "POS Application",
+    "register": "Register",
+    "login": "Login",
+    "emailLabel": "E-mail *",
+    "passwordLabel": "Password *",
+    "firstNameLabel": "First name *",
+    "lastNameLabel": "Last Name *",
+    "phoneNumberLabel": "Tel. *",
+    "storeNameLabel": "Business name *",
+    "signInHere": "Already have an account?",
+    "sale": "sale",
+    "receipt": "receipt",
+    "forgotPassword": "forgot password?",
+    "chooseBusinessType": "choose business type *",
+    "pleaseAcceptTheTermsOfUse": "Please accept the terms of use",
+    "acceptThePOSApplication": "I accept the POS Application Terms of Use and have read and accepted the Privacy Policy",
+    "youDon'tHaveAWebBrowser": "You don't have a web browser"
+}
