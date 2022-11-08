@@ -31,6 +31,7 @@ class AppThemes {
     headline5: _lightScreenHeadLine5TextStyle,
     headline4: _lightScreenHeadLine4TextStyle,
     bodyText1: _lightScreenBody1TextStyle,
+    button: _lightButtonTextStyle,
   );
 
   static final ThemeData lightTheme = ThemeData(
@@ -55,9 +56,10 @@ class AppThemes {
       ),
     ),
     textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-            primary: _lightOnTextButtonColor,
-            textStyle: _lightTextButtonTextStyle)),
+      style: TextButton.styleFrom(
+          primary: _lightOnTextButtonColor,
+          textStyle: _lightTextButtonTextStyle),
+    ),
     scaffoldBackgroundColor: _lightPrimaryVariantColor,
     textTheme: _lightTextTheme,
   );

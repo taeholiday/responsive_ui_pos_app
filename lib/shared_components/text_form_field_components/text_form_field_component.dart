@@ -6,13 +6,23 @@ class TextFormFieldComponent extends StatelessWidget {
   final String? labelText;
   final bool? isPassword;
   final Function? validatorCallBack;
-  const TextFormFieldComponent(
-      {Key? key, this.labelText, this.isPassword, this.validatorCallBack})
-      : super(key: key);
+  final Map<String, dynamic> userInformation;
+  final String keyString;
+  const TextFormFieldComponent({
+    Key? key,
+    this.labelText,
+    this.isPassword,
+    this.validatorCallBack,
+    required this.userInformation,
+    required this.keyString,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        userInformation[keyString] = value;
+      },
       style: Theme.of(context).textTheme.bodyText1,
       obscureText: isPassword != null && isPassword!
           ? Provider.of<ObscureTextProvider>(context).getIsObscure

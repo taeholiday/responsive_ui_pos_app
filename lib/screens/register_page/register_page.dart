@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:test_responsive_ui/app_localization.dart';
-import 'package:test_responsive_ui/constants/validate_management/empty_validate.dart';
 import 'package:test_responsive_ui/screens/intro_page/intro_page.dart';
 import 'package:test_responsive_ui/screens/login_page/login_page.dart';
-import 'package:test_responsive_ui/shared_components/button_components/button_component.dart';
+import 'package:test_responsive_ui/screens/register_page/register_mobile_layout.dart';
+import 'package:test_responsive_ui/screens/register_page/register_tablet_layout.dart';
 import 'package:test_responsive_ui/shared_components/button_components/text_button_component.dart';
+import 'package:test_responsive_ui/shared_components/responsive/responsive_layout.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../shared_components/text_form_field_components/text_form_field_component.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final formkey = GlobalKey<FormState>();
   bool isChecked = false;
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   List<String> dataBusinessType = [
     "ร้านกาเเฟ / ค่าเฟ่",
     "ร้านอาหาร",
@@ -28,172 +28,35 @@ class _RegisterPageState extends State<RegisterPage> {
     "ร้านขายของชำ",
     "ร้านขายยา",
   ];
+
+  Map<String, dynamic> userInformation = {
+    "email": "",
+    "password": "",
+    "firstName": "",
+    "lastName": "",
+    "phoneNumber": "",
+    "storeName": "",
+    "businessType": "",
+  };
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.translate("register")),
-      ),
-      body: SafeArea(
-          child: Center(
-        child: SingleChildScrollView(
-          child: Form(
-            key: formkey,
-            child: LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints constraints) {
-                if (constraints.maxWidth > 600) {
-                  return registerLayoutTablet();
-                } else {
-                  return registerLayoutMobile();
-                }
-              },
-            ),
-          ),
+    return ResponsiveLayout(
+        mobileBody: RegisterMobileLayout(
+          agreeToTheTermsOfUse: agreeToTheTermsOfUse(),
+          dropdownSelectBusinessType: dropdownSelectBusinessType(),
+          callLoginPage: callLoginPage,
+          callRegisterService: callRegisterService,
+          formkey: formkey,
+          userInformation: userInformation,
         ),
-      )),
-    );
-  }
-
-  Widget registerLayoutTablet() {
-    return Card(
-      child: Container(
-        padding: const EdgeInsets.all(10.0),
-        width: MediaQuery.of(context).size.width > 800
-            ? MediaQuery.of(context).size.width * 0.3
-            : MediaQuery.of(context).size.width > 600
-                ? MediaQuery.of(context).size.width * 0.5
-                : MediaQuery.of(context).size.width * 0.9,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextFormFieldComponent(
-              labelText: AppLocalizations.of(context)!.translate("emailLabel"),
-              validatorCallBack: emptyValidator,
-            ),
-            TextFormFieldComponent(
-              validatorCallBack: emptyValidator,
-              labelText:
-                  AppLocalizations.of(context)!.translate("passwordLabel"),
-              isPassword: true,
-            ),
-            Row(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                Expanded(
-                  child: TextFormFieldComponent(
-                    labelText: AppLocalizations.of(context)!
-                        .translate("firstNameLabel"),
-                    validatorCallBack: emptyValidator,
-                  ),
-                ),
-                const SizedBox(width: 10.0),
-                Expanded(
-                  child: TextFormFieldComponent(
-                    labelText: AppLocalizations.of(context)!
-                        .translate("lastNameLabel"),
-                    validatorCallBack: emptyValidator,
-                  ),
-                ),
-              ],
-            ),
-            TextFormFieldComponent(
-              labelText:
-                  AppLocalizations.of(context)!.translate("phoneNumberLabel"),
-              validatorCallBack: emptyValidator,
-            ),
-            TextFormFieldComponent(
-              labelText:
-                  AppLocalizations.of(context)!.translate("storeNameLabel"),
-              validatorCallBack: emptyValidator,
-            ),
-            const SizedBox(height: 10.0),
-            dropdownSelectBusinessType(),
-            agreeToTheTermsOfUse(),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 15.0),
-              height: 50.0,
-              width: MediaQuery.of(context).size.width > 800
-                  ? MediaQuery.of(context).size.width * 0.4
-                  : MediaQuery.of(context).size.width > 600
-                      ? MediaQuery.of(context).size.width * 0.5
-                      : MediaQuery.of(context).size.width * 0.9,
-              child: ButtonComponent(
-                buttonName: AppLocalizations.of(context)!.translate("register"),
-                function: callRegisterService,
-              ),
-            ),
-            loginButton()
-          ],
-        ),
-      ),
-    );
-  }
-
-  registerLayoutMobile() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      child: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          TextFormFieldComponent(
-            labelText: AppLocalizations.of(context)!.translate("emailLabel"),
-            validatorCallBack: emptyValidator,
-          ),
-          TextFormFieldComponent(
-            validatorCallBack: emptyValidator,
-            labelText: AppLocalizations.of(context)!.translate("passwordLabel"),
-            isPassword: true,
-          ),
-          Row(
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              Expanded(
-                child: TextFormFieldComponent(
-                  labelText:
-                      AppLocalizations.of(context)!.translate("firstNameLabel"),
-                  validatorCallBack: emptyValidator,
-                ),
-              ),
-              const SizedBox(width: 10.0),
-              Expanded(
-                child: TextFormFieldComponent(
-                  labelText:
-                      AppLocalizations.of(context)!.translate("lastNameLabel"),
-                  validatorCallBack: emptyValidator,
-                ),
-              ),
-            ],
-          ),
-          TextFormFieldComponent(
-            labelText:
-                AppLocalizations.of(context)!.translate("phoneNumberLabel"),
-            validatorCallBack: emptyValidator,
-          ),
-          TextFormFieldComponent(
-            labelText:
-                AppLocalizations.of(context)!.translate("storeNameLabel"),
-            validatorCallBack: emptyValidator,
-          ),
-          const SizedBox(height: 10.0),
-          dropdownSelectBusinessType(),
-          agreeToTheTermsOfUse(),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 15.0),
-            height: 50.0,
-            width: MediaQuery.of(context).size.width > 800
-                ? MediaQuery.of(context).size.width * 0.4
-                : MediaQuery.of(context).size.width > 600
-                    ? MediaQuery.of(context).size.width * 0.5
-                    : MediaQuery.of(context).size.width * 0.9,
-            child: ButtonComponent(
-              buttonName: AppLocalizations.of(context)!.translate("register"),
-              function: callRegisterService,
-            ),
-          ),
-          loginButton()
-        ],
-      ),
-    );
+        tabletBody: RegisterTabletLayout(
+          agreeToTheTermsOfUse: agreeToTheTermsOfUse(),
+          dropdownSelectBusinessType: dropdownSelectBusinessType(),
+          callLoginPage: callLoginPage,
+          callRegisterService: callRegisterService,
+          formkey: formkey,
+          userInformation: userInformation,
+        ));
   }
 
   Container loginButton() {
@@ -215,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Container agreeToTheTermsOfUse() {
+  Widget agreeToTheTermsOfUse() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
       child: Row(
@@ -284,10 +147,13 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       );
     } else {
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(pageBuilder: (_, __, ___) => const IntroPage()),
-      );
+      userInformation["businessType"] = _controller.text;
+      print("userInformation Register");
+      print(userInformation);
+      // Navigator.pushReplacement(
+      //   context,
+      //   PageRouteBuilder(pageBuilder: (_, __, ___) => const IntroPage()),
+      // );
     }
   }
 

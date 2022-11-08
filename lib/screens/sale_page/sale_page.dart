@@ -1,6 +1,9 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
-import 'package:test_responsive_ui/app_localization.dart';
-import 'package:test_responsive_ui/shared_components/drawer_components/drawer_component.dart';
+import 'package:test_responsive_ui/screens/sale_page/sale_mobile_layout.dart';
+import 'package:test_responsive_ui/screens/sale_page/sale_tablet_layout.dart';
+import 'package:test_responsive_ui/shared_components/responsive/responsive_layout.dart';
 
 class SalePage extends StatefulWidget {
   const SalePage({Key? key}) : super(key: key);
@@ -12,28 +15,9 @@ class SalePage extends StatefulWidget {
 class _SalePageState extends State<SalePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.translate("sale")),
-      ),
-      drawer: const DrawerComponent(),
-      body: SafeArea(child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 600) {
-            return saleLayoutTablet();
-          } else {
-            return saleLayoutMobile();
-          }
-        },
-      )),
+    return const ResponsiveLayout(
+      mobileBody: SaleMobileLayout(),
+      tabletBody: SaleTabletLayout(),
     );
-  }
-
-  Text saleLayoutMobile() {
-    return Text("sale layout mobile");
-  }
-
-  Widget saleLayoutTablet() {
-    return Text("sale layout tablet");
   }
 }

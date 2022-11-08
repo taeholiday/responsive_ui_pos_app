@@ -15,5 +15,7 @@
     "chooseBusinessType": "choose business type *",
     "pleaseAcceptTheTermsOfUse": "Please accept the terms of use",
     "acceptThePOSApplication": "I accept the POS Application Terms of Use and have read and accepted the Privacy Policy",
-    "youDon'tHaveAWebBrowser": "You don't have a web browser"
+    "youDon'tHaveAWebBrowser": "You don't have a web browser",
+    "charge": "charge",
+    "ticket": "ticket"
 }

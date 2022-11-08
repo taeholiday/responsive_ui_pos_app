@@ -1,0 +1,22 @@
+{
+    "receiptId": "001",
+    "employeeName": "anukul",
+    "productDetail": [
+        {
+            "productId": 1,
+            "productName": "product1",
+            "amount": 2,
+            "productPrice": 100
+        },
+        {
+            "productId": 2,
+            "productName": "product2",
+            "amount": 1,
+            "productPrice": 50
+        }
+    ],
+    "totalPrice": 250,
+    "vat": 17.50,
+    "sumTotal": 267.50,
+    "cash": 268
+}
