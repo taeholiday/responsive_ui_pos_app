@@ -1,24 +1,50 @@
 class ReceiptModel {
+  List<Data>? data;
+
+  ReceiptModel({this.data});
+
+  ReceiptModel.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(new Data.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Data {
   String? receiptId;
-  String? enpName;
+  String? employeeName;
+  String? orderDate;
   List<ProductDetail>? productDetail;
   int? totalPrice;
   double? vat;
   double? sumTotal;
   int? cash;
 
-  ReceiptModel(
+  Data(
       {this.receiptId,
-      this.enpName,
+      this.employeeName,
+      this.orderDate,
       this.productDetail,
       this.totalPrice,
       this.vat,
       this.sumTotal,
       this.cash});
 
-  ReceiptModel.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     receiptId = json['receiptId'];
-    enpName = json['enpName'];
+    employeeName = json['employeeName'];
+    orderDate = json['orderDate'];
     if (json['productDetail'] != null) {
       productDetail = <ProductDetail>[];
       json['productDetail'].forEach((v) {
@@ -34,7 +60,8 @@ class ReceiptModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['receiptId'] = this.receiptId;
-    data['enpName'] = this.enpName;
+    data['employeeName'] = this.employeeName;
+    data['orderDate'] = this.orderDate;
     if (this.productDetail != null) {
       data['productDetail'] =
           this.productDetail!.map((v) => v.toJson()).toList();
