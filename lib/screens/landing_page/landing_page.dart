@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:test_responsive_ui/app_localization.dart';
 import 'package:test_responsive_ui/screens/landing_page/landing_page_mobile_layout.dart';
 import 'package:test_responsive_ui/screens/landing_page/landing_page_tablet_layout.dart';
 import 'package:test_responsive_ui/screens/login_page/login_page.dart';

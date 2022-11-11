@@ -15,6 +15,7 @@ class ReceiptPage extends StatefulWidget {
 class _ReceiptPageState extends State<ReceiptPage> {
   ReceiptModel receiptModel = ReceiptModel();
   bool isLoodStatus = false;
+  List<Data>? receiptData = [];
 
   @override
   void initState() {
@@ -30,11 +31,11 @@ class _ReceiptPageState extends State<ReceiptPage> {
         isLoodStatus = true;
       });
     }
+    receiptData = receiptModel.data;
   }
 
   void _runFilter(String enteredKeyword) {
     List<Data>? results = [];
-
     if (enteredKeyword.isEmpty) {
       // if the search field is empty or only contains white-space, we'll display all users
       results = receiptModel.data;
@@ -51,7 +52,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
 
     // Refresh the UI
     setState(() {
-      receiptModel.data = results;
+      receiptData = results;
     });
   }
 
@@ -59,10 +60,14 @@ class _ReceiptPageState extends State<ReceiptPage> {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
         mobileBody: ReceiptMobileLayout(
-          receiptModel: receiptModel,
+          receiptData: receiptData!,
           isLoodStatus: isLoodStatus,
           runFilter: _runFilter,
         ),
-        tabletBody: ReceiptTabletLayout());
+        tabletBody: ReceiptTabletLayout(
+          receiptData: receiptData!,
+          isLoodStatus: isLoodStatus,
+          runFilter: _runFilter,
+        ));
   }
 }

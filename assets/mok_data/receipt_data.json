@@ -49,7 +49,7 @@
         {
             "receiptId": "003",
             "employeeName": "anukul",
-            "orderDate": "11/11/2022",
+            "orderDate": "8/11/2022",
             "productDetail": [
                 {
                     "productId": 1,
@@ -233,7 +233,7 @@
         {
             "receiptId": "0011",
             "employeeName": "anukul",
-            "orderDate": "20/11/2022",
+            "orderDate": "25/11/2022",
             "productDetail": [
                 {
                     "productId": 1,

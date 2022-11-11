@@ -17,5 +17,7 @@
     "acceptThePOSApplication": "ฉันยอมรับ ข้อกำหนดการใช้งานของ POS Application และได้อ่านและยอมรับนโยบายความเป็นส่วนตัว แล้ว",
     "youDon'tHaveAWebBrowser": "คุณไม่มีเว็บบราวเซอร์",
     "charge": "ชำระเงิน",
-    "ticket": "ตั๋วออเดอร์"
+    "ticket": "ตั๋วออเดอร์",
+    "findDate": "ค้นหาวันที่",
+    "noInformationFound": "ไม่พบข้อมูล"
 }

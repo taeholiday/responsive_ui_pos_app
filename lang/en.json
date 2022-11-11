@@ -17,5 +17,7 @@
     "acceptThePOSApplication": "I accept the POS Application Terms of Use and have read and accepted the Privacy Policy",
     "youDon'tHaveAWebBrowser": "You don't have a web browser",
     "charge": "charge",
-    "ticket": "ticket"
+    "ticket": "ticket",
+    "findDate": "find date",
+    "noInformationFound": "no information found"
 }
