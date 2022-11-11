@@ -75,12 +75,21 @@ class ReceiptMobileLayout extends StatelessWidget {
                                   children: [
                                     ListTile(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          PageRouteBuilder(
-                                              pageBuilder: (_, __, ___) =>
-                                                  const ReceiptDetailPage()),
-                                        );
+                                        MediaQuery.of(context).size.width > 600
+                                            ? ReceiptDetailPage(
+                                                receiptData: receiptData,
+                                                index: index,
+                                              )
+                                            : Navigator.push(
+                                                context,
+                                                PageRouteBuilder(
+                                                    pageBuilder: (_, __, ___) =>
+                                                        ReceiptDetailPage(
+                                                          receiptData:
+                                                              receiptData,
+                                                          index: index,
+                                                        )),
+                                              );
                                       },
                                       leading: const Icon(Icons.money),
                                       title: Text(
